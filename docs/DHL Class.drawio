@@ -1,0 +1,259 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="통합 클래스 설계" id="0">
+    <mxGraphModel dx="17788" dy="11025" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="3900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="con" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;ConveyorController&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- conveyorType : ConveyorType&lt;br&gt;- speed : float&lt;br&gt;- isRunning : bool&lt;br&gt;- moveDirection : Vector3&lt;br&gt;────────────&lt;br&gt;+ StartConveyor() : void&lt;br&gt;+ StopConveyor() : void&lt;br&gt;+ SetSpeed(speed : float) : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="687" width="772" x="-3070" y="-820" as="geometry" />
+        </mxCell>
+        <mxCell id="type" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#f5f5f5;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;ConveyorType&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;«enumeration»&lt;br&gt;Main&lt;br&gt;Food&lt;br&gt;Fragile&lt;/font&gt;" vertex="1">
+          <mxGeometry height="460" width="613.5" x="-3130" y="863" as="geometry" />
+        </mxCell>
+        <mxCell id="parcel" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;Parcel&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- parcelId : int&lt;br&gt;────────────&lt;br&gt;+ GetId() : int&lt;/font&gt;" vertex="1">
+          <mxGeometry height="403" width="504" x="70" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="rec" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;RecognitionController&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- cameraCapture : InspectionCameraCapture&lt;br&gt;- preprocessor : ImagePreprocessor&lt;br&gt;- classifier : CNNClassifier&lt;br&gt;- rule : RecognitionRule&lt;br&gt;- currentParcel : Parcel&lt;br&gt;- isProcessing : bool&lt;br&gt;────────────&lt;br&gt;+ StartRecognition(parcel : Parcel) : void&lt;br&gt;- ProcessRecognition() : void&lt;br&gt;- HandleFailure(message : string) : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="890" width="820" x="20" y="-1100" as="geometry" />
+        </mxCell>
+        <mxCell id="camera" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;InspectionCameraCapture&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- inspectionCamera : Camera&lt;br&gt;- renderTexture : RenderTexture&lt;br&gt;────────────&lt;br&gt;+ Capture() : RenderTexture&lt;/font&gt;" vertex="1">
+          <mxGeometry height="576" width="954" x="1546" y="-1140" as="geometry" />
+        </mxCell>
+        <mxCell id="pre" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;ImagePreprocessor&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- inputWidth : int&lt;br&gt;- inputHeight : int&lt;br&gt;- useFixedROI : bool&lt;br&gt;────────────&lt;br&gt;+ Preprocess(image : RenderTexture) : Tensor&amp;lt;float&amp;gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="521" width="723" x="3350" y="-1711" as="geometry" />
+        </mxCell>
+        <mxCell id="scores" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;FeatureScores&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;+ fragileScore : float&lt;br&gt;+ foodScore : float&lt;br&gt;+ isValid : bool&lt;/font&gt;" vertex="1">
+          <mxGeometry height="307" width="620" x="2670" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="rule" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;RecognitionRule&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- fragileThreshold : float&lt;br&gt;- foodThreshold : float&lt;br&gt;────────────&lt;br&gt;+ Evaluate(parcelId : int, scores : FeatureScores)&lt;br&gt;  : RecognitionResult&lt;/font&gt;" vertex="1">
+          <mxGeometry height="629" width="723" x="1664" y="-133" as="geometry" />
+        </mxCell>
+        <mxCell id="result" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;RecognitionResult&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;+ parcelId : int&lt;br&gt;+ category : ParcelCategory&lt;br&gt;+ scores : FeatureScores&lt;br&gt;+ isValid : bool&lt;br&gt;+ errorMessage : string&lt;/font&gt;" vertex="1">
+          <mxGeometry height="423" width="698" x="1510" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="category" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#f5f5f5;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;ParcelCategory&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;«enumeration»&lt;br&gt;General&lt;br&gt;Food&lt;br&gt;Fragile&lt;br&gt;Unknown&lt;/font&gt;" vertex="1">
+          <mxGeometry height="433" width="628" x="260" y="1221.5" as="geometry" />
+        </mxCell>
+        <mxCell id="flow" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;SortingCoordinator&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;+ HandleRecognition(result : RecognitionResult) : void&lt;br&gt;+ RequestRobot(parcel : Parcel) : void&lt;br&gt;+ OnRobotCompleted(parcelId : int, success : bool) : void&lt;br&gt;&lt;br&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="470" width="1080" x="520" y="2000" as="geometry" />
+        </mxCell>
+        <mxCell id="work" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;RobotWorkspace&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- basePosition : Vector3&lt;br&gt;- maxReachRadius : float&lt;br&gt;- minReachRadius : float&lt;br&gt;- minHeight : float&lt;br&gt;- maxHeight : float&lt;br&gt;- workspaceBounds : Bounds&lt;br&gt;────────────&lt;br&gt;+ IsPointInWorkspace(targetPos : Vector3) : bool&lt;br&gt;+ CheckOverlap(otherWorkspace : RobotWorkspace) : bool&lt;br&gt;+ DrawGizmos() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="957" width="988" x="-3060" y="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="finger" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#f5f5f5;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;FingerContact&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- TouchingPart : Rigidbody&lt;br&gt;+ Clear() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="340" width="620" x="-1370" y="3895" as="geometry" />
+        </mxCell>
+        <mxCell id="grip" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;GripperController&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- rightFinger : ArticulationBody&lt;br&gt;- leftFinger : ArticulationBody&lt;br&gt;- rightContact : FingerContact&lt;br&gt;- leftContact : FingerContact&lt;br&gt;- rightOpen : float&lt;br&gt;- rightClose : float&lt;br&gt;- leftOpen : float&lt;br&gt;- leftClose : float&lt;br&gt;- moveTime : float&lt;br&gt;- attachPoint : Transform&lt;br&gt;- HeldPart : Rigidbody&lt;br&gt;- IsBusy : bool&lt;br&gt;────────────&lt;br&gt;+ Close() : IEnumerator&lt;br&gt;+ Open() : IEnumerator&lt;br&gt;- PredictGrasp(out part : Rigidbody) : bool&lt;br&gt;- Attach(part : Rigidbody) : void&lt;br&gt;- Detach() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="1247" width="950" x="-1477.5" y="783" as="geometry" />
+        </mxCell>
+        <mxCell id="suction" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;SuctionGripperController&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- suctionPadCenter : Transform&lt;br&gt;- suctionRange : float&lt;br&gt;- attachPoint : Transform&lt;br&gt;- maxAllowedAngle : float&lt;br&gt;- HeldPart : Rigidbody&lt;br&gt;- IsBusy : bool&lt;br&gt;- IsVacuumOn : bool&lt;br&gt;────────────&lt;br&gt;+ EngageVacuum() : IEnumerator&lt;br&gt;+ ReleaseVacuum() : IEnumerator&lt;br&gt;- DetectTargetPart(out bestPart : Rigidbody,&lt;br&gt;  out bestHit : RaycastHit) : bool&lt;br&gt;- Attach(part : Rigidbody) : void&lt;br&gt;- Detach() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="957" width="1032" x="2370" y="1610" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="con" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="type" value="라인 종류">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="con" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=15;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;" target="parcel" value="이송">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2684" y="560" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="stop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" target="parcel" value="감지·정지">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" target="parcel" value="검사 대상">
+          <mxGeometry relative="1" x="-0.1358" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="-210" />
+              <mxPoint x="630" y="-60" />
+              <mxPoint x="574" y="-60" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="camera" value="영상 취득">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="camera" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="pre" value="검사 영상">
+          <mxGeometry relative="1" x="0.1324" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="pre" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" target="cnn" value="입력 텐서">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="cnn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="scores" value="특징 점수">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="scores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="rule" value="판정 입력">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="rule" value="분류 규칙">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2025.5" y="-400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="rule" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="result" value="결과 생성">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="category" value="분류 종류">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="scores" value="점수 참조">
+          <mxGeometry relative="1" x="0.2853" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="work" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;" target="grip" value="작업 영역">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="work" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" target="suction" value="작업 영역">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="grip" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#64748b;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="finger" value="접촉 감지">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1" edge="1" parent="1" source="stop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" target="rec" value="정지 확인 후 인식 요청&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" edge="1" parent="1" source="rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" target="flow" value="인식 결과 전달&amp;nbsp;">
+          <mxGeometry relative="1" x="-0.1701" as="geometry">
+            <Array as="points">
+              <mxPoint x="1150" y="-210" />
+              <mxPoint x="1150" y="895" />
+              <mxPoint x="1060" y="895" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p3" edge="1" parent="1" source="flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" target="stop" value="처리 완료·해제 요청&amp;nbsp;">
+          <mxGeometry relative="1" x="-0.0676" as="geometry">
+            <Array as="points">
+              <mxPoint x="-240" y="2000" />
+              <mxPoint x="-240" y="-370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p4" edge="1" parent="1" source="flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;" target="grip" value="식품 집기 요청&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5" edge="1" parent="1" source="flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7.5;endArrow=block;endFill=1;" target="suction" value="파손주의 흡착 요청&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dash" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;DashboardController&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- view : DashboardView&lt;br&gt;- stats : SortingStatistics&lt;br&gt;────────────&lt;br&gt;+ OnRecognition(result : RecognitionResult) : void&lt;br&gt;+ OnSortingResult(parcelId : int, status : SortStatus) : void&lt;br&gt;+ OnEquipmentStatus(name : string, state : string) : void&lt;br&gt;+ ShowError(parcelId : int, message : string) : void&lt;br&gt;+ ResetStatistics() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="957" width="980" x="4820" y="-1190" as="geometry" />
+        </mxCell>
+        <mxCell id="view" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;DashboardView&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- classificationText : TMP_Text&lt;br&gt;- successRateText : TMP_Text&lt;br&gt;- throughputText : TMP_Text&lt;br&gt;- equipmentStatusText : TMP_Text&lt;br&gt;- errorText : TMP_Text&lt;br&gt;────────────&lt;br&gt;+ ShowClassification(id : int, category : ParcelCategory) : void&lt;br&gt;+ ShowStatistics(stats : SortingStatistics) : void&lt;br&gt;+ ShowEquipmentStatus(name : string, state : string) : void&lt;br&gt;+ ShowError(id : int, message : string) : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="932" width="1250" x="6160" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="stat" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#f5f5f5;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;SortStatus&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;«enumeration»&lt;br&gt;Attempted&lt;br&gt;Succeeded&lt;br&gt;Failed&lt;br&gt;Completed&lt;/font&gt;" vertex="1">
+          <mxGeometry height="450" width="580" x="5320" y="1680" as="geometry" />
+        </mxCell>
+        <mxCell id="dp1" edge="1" parent="1" source="rec" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="dash" value="인식 결과 이벤트&amp;nbsp;">
+          <mxGeometry relative="1" x="-0.0518" as="geometry">
+            <Array as="points">
+              <mxPoint x="1560" y="-460" />
+              <mxPoint x="1560" y="-460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dp2" edge="1" parent="1" source="stats" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="dash" value="작업 결과·오류 이벤트&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dp3" edge="1" parent="1" source="stop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="dash" value="컨베이어 상태&amp;nbsp;">
+          <mxGeometry relative="1" x="0.0237" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1002.5" y="-840" />
+              <mxPoint x="-1002.5" y="-1960" />
+              <mxPoint x="5310" y="-1960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dp4" edge="1" parent="1" source="dash" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="view" value="표시 갱신&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dp5" edge="1" parent="1" source="cnn" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="stats" value="기록 및 집계&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dp6" edge="1" parent="1" source="dash" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;" target="stat" value="결과 상태&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="4930" y="324" />
+              <mxPoint x="4930" y="1102.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="task" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#dae8fc;strokeColor=#334155;strokeWidth=2;fontColor=#17212f;fontSize=17;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;TaskDispatcher&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- taskQueue : Queue&amp;lt;InspectionTask&amp;gt;&lt;br&gt;- availableRobots : List&amp;lt;UR20Robot&amp;gt;&lt;br&gt;────────────&lt;br&gt;+ EnqueueTask(result : InspectClass, part : PartInfo,&lt;br&gt;  base : BaseInfo) : void&lt;br&gt;+ AssignOptimalRobot() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="600" width="970" x="1110" y="2790" as="geometry" />
+        </mxCell>
+        <mxCell id="router" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#d5e8d4;strokeColor=#334155;strokeWidth=2;fontColor=#17212f;fontSize=17;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;InspectionRouter&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- routingTable : RoutingTable&lt;br&gt;────────────&lt;br&gt;+ DetermineDestination(inspectResult : InspectClass)&lt;br&gt;  : DestinationType&lt;br&gt;+ RouteTask(result : InspectClass) : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="610" width="910" x="-40" y="3760" as="geometry" />
+        </mxCell>
+        <mxCell id="path" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#e1d5e7;strokeColor=#334155;strokeWidth=2;fontColor=#17212f;fontSize=17;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;PathPlanner&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- movementSpeed : float&lt;br&gt;- acceleration : float&lt;br&gt;────────────&lt;br&gt;+ GenerateTrajectory(start : Vector3, target : Vector3,&lt;br&gt;  type : PathType) : List&amp;lt;Vector3&amp;gt;&lt;br&gt;+ ValidateWaypoint(point : Vector3) : bool&lt;br&gt;+ CalculateApproachVector(targetPos : Vector3,&lt;br&gt;  offset : float) : Vector3&lt;/font&gt;" vertex="1">
+          <mxGeometry height="860" width="1193" x="3710" y="3170" as="geometry" />
+        </mxCell>
+        <mxCell id="assembly" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#fff2cc;strokeColor=#334155;strokeWidth=2;fontColor=#17212f;fontSize=17;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;AssemblySequence&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- LastTruth : InspectClass&lt;br&gt;- LastInjected : DefectType&lt;br&gt;────────────&lt;br&gt;+ AssembleAt(graspYaw : float, holeYaw : float) : IEnumerator&lt;br&gt;+ Reject(keepDropped : bool) : IEnumerator&lt;br&gt;+ EvaluateResult() : InspectClass&lt;/font&gt;" vertex="1">
+          <mxGeometry height="680" width="850" x="1720" y="3540" as="geometry" />
+        </mxCell>
+        <mxCell id="n1" edge="1" parent="1" source="task" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#334155;strokeWidth=7.5;fontSize=50;labelBackgroundColor=#ffffff;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="router" value="분류 결과 라우팅">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n2" edge="1" parent="1" source="task" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#334155;strokeWidth=7.5;fontSize=50;labelBackgroundColor=#ffffff;" target="path" value="작업 경로">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n3" edge="1" parent="1" source="router" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#334155;strokeWidth=7.5;fontSize=50;labelBackgroundColor=#ffffff;" target="assembly" value="작업 전달">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n4" edge="1" parent="1" source="path" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#334155;strokeWidth=7.5;fontSize=50;labelBackgroundColor=#ffffff;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="assembly" value="경로 전달">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="linktask" edge="1" parent="1" source="flow" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b96800;strokeWidth=2.5;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;" target="task" value="인식 결과로 작업 등록&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="linkwork" edge="1" parent="1" source="task" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#b96800;strokeWidth=7.5;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="work" value="로봇 작업 범위 확인&amp;nbsp;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Rv_fWSEOPS8BKGE5Xjp4-7" connectable="0" parent="linkwork" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=50;labelBackgroundColor=#ffffff;" value="Text" vertex="1">
+          <mxGeometry relative="1" x="0.0316" y="-37" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Rv_fWSEOPS8BKGE5Xjp4-1" edge="1" parent="1" source="flow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" target="stats" value="">
+          <mxGeometry relative="1" x="-0.1972" as="geometry">
+            <Array as="points">
+              <mxPoint x="1610" y="2000" />
+              <mxPoint x="1610" y="1529.5" />
+            </Array>
+            <mxPoint x="1808" y="1677" as="sourcePoint" />
+            <mxPoint x="3689" y="483" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="stats" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#fff2cc;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;SortingStatistics&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- sortingAttempts : int&lt;br&gt;- sortingSuccesses : int&lt;br&gt;- completedCount : int&lt;br&gt;- observationStart : float&lt;br&gt;────────────&lt;br&gt;+ RecordAttempt(parcelId : int) : void&lt;br&gt;+ RecordSuccess(parcelId : int) : void&lt;br&gt;+ RecordCompletion(parcelId : int) : void&lt;br&gt;+ GetSuccessRate() : float?&lt;br&gt;+ GetThroughput() : float&lt;br&gt;+ Reset() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="1061" width="800" x="3870" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="Rv_fWSEOPS8BKGE5Xjp4-2" edge="1" parent="1" source="con" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="stop" value="">
+          <mxGeometry relative="1" x="-0.2905" as="geometry">
+            <Array as="points">
+              <mxPoint x="-2298" y="80" />
+              <mxPoint x="-1700" y="80" />
+              <mxPoint x="-1700" y="-520" />
+            </Array>
+            <mxPoint x="-164" y="180" as="sourcePoint" />
+            <mxPoint x="3360" y="99" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="stop" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#d5e8d4;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;StopperController&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- isActive : bool&lt;br&gt;- currentParcel : Parcel&lt;br&gt;────────────&lt;br&gt;+ DetectParcel(parcel : Parcel) : void&lt;br&gt;+ Activate() : void&lt;br&gt;+ Release() : void&lt;br&gt;+ CompleteProcessing() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="600" width="835" x="-1670" y="-840" as="geometry" />
+        </mxCell>
+        <mxCell id="Rv_fWSEOPS8BKGE5Xjp4-6" edge="1" parent="1" source="dash" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;strokeColor=#dd8300;dashed=1;fontSize=50;labelBackgroundColor=#ffffff;strokeWidth=7;endArrow=block;endFill=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="cnn" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4820" y="-711" as="sourcePoint" />
+            <mxPoint x="3990" y="999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cnn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#e1d5e7;strokeColor=#64748b;fontColor=#17212f;fontSize=17;strokeWidth=2;spacing=13;" value="&lt;b&gt;&lt;font style=&quot;font-size: 72px;&quot;&gt;CNNClassifier&lt;/font&gt;&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;- modelAsset : ModelAsset&lt;br&gt;- worker : Worker&lt;br&gt;────────────&lt;br&gt;+ Initialize() : void&lt;br&gt;+ Predict(input : Tensor&amp;lt;float&amp;gt;) : FeatureScores&lt;br&gt;+ Dispose() : void&lt;/font&gt;" vertex="1">
+          <mxGeometry height="600" width="1000" x="3477" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
