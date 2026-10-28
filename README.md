@@ -1,7 +1,5 @@
-# DHL 택배 자동 선별 공정
-
 ## 클래스 다이어그램
 
-[택배 자동 선별 공정 클래스 다이어그램](docs/DHL%20Class.drawio)
+[클래스 다이어그램 바로 보기](https://app.diagrams.net/#Uhttps%3A%2F%2Fraw.githubusercontent.com%2FHJ-polarbear%2FDHL_Factory_Project%2FDevelop%2Fdocs%2FDHL%20Class.drawio)
 
-파일을 다운로드한 뒤 draw.io에서 열면 확인하고 수정할 수 있습니다.
+[다이어그램 원본 파일](docs/DHL%20Class.drawio)
